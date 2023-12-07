@@ -9,7 +9,7 @@ def lstm_model(x_train, y_train, x_test, y_test, epochs: int = 25, batch_size: i
     model.add(tf.keras.layers.LSTM(64, return_sequences=True))
     model.add(tf.keras.layers.LSTM(32))
     model.add(tf.keras.layers.Dense(1))
-    model.compile(optimizer='adam', loss='mse', metrics=['accuracy'])
+    model.compile(optimizer='adam', loss='mse', metrics=['mae', 'mape'])
     history = model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_test, y_test),
                         verbose=2)
     return model, history

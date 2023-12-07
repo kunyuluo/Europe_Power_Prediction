@@ -1,1 +1,3 @@
 # Europe_Power_Prediction
+
+When we roughly compare the results, it can be said that the two outcomes are close to reality. However, when looked in detail, it is seen that LSTM draws a more successful graph at the lower and upper peaks, especially at the lower peak points. While almost all lower peaks of the DNN results are lower than they should have been, LSTM draws a more successful and appropriate graph even though there are small upward and downward deviations.

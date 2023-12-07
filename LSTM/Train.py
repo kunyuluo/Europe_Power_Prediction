@@ -1,12 +1,11 @@
 from Data_Processing import get_data, plot_accuracy_and_loss
-from LSTM_Model import lstm_model, lstm_predict
+from LSTM.LSTM_Model import lstm_model
 import pickle
-import json
 
 # Load the data
 # ************************************************************************************
-data_path = 'datasets\\de.csv'
-x_train, y_train, x_test, y_test = get_data(data_path, seq_size=48)
+data_path = '../datasets/de.csv'
+x_train, y_train, x_test, y_test, scaler = get_data(data_path, seq_size=48)
 # print(x_train)
 
 # Train the model
@@ -17,10 +16,10 @@ plot_accuracy_and_loss(history)
 
 # Save the model
 # ************************************************************************************
-with open('model', 'wb') as file:
+with open('lstm_model', 'wb') as file:
     pickle.dump(model, file)
     print('Model saved')
 
-with open('scaler', 'wb') as file:
-    pickle.dump(model, file)
-    print('Scaler saved')
+# with open('scaler', 'wb') as file:
+#     pickle.dump(scaler, file)
+#     print('Scaler saved')

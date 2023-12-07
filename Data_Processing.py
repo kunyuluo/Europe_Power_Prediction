@@ -55,7 +55,7 @@ def get_data(file_path: str, seq_size=1):
     x_train, y_train = to_sequences(train[['load']], train['load'], seq_size)
     x_test, y_test = to_sequences(test[['load']], test['load'], seq_size)
 
-    return x_train, y_train, x_test, y_test
+    return x_train, y_train, x_test, y_test, scaler
 
 
 def to_sequences(x, y, seq_size=1):
@@ -90,3 +90,15 @@ def plot_accuracy_and_loss(history, epochs: int = 25):
     plt.legend(loc='upper right')
     plt.title('Training and Validation Loss')
     plt.show()
+
+
+def evaluate_accuracy(real, predict):
+    real = np.array(real)
+    predict = np.array(predict)
+
+    loss = 0
+    for i in range(len(real)):
+        loss += abs(real[i] - predict[i])
+
+    accuracy = loss / real.shape[0]
+    return accuracy
